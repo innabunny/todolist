@@ -15,7 +15,7 @@
       </div>
       <div class="btns">
         <button @click="deleteTask(task)">Удалить</button>
-        <button @click="editTask(task.id)">Изменить</button>
+        <button @click="editTask(task)">Изменить</button>
       </div>
     </div>
 
@@ -79,10 +79,11 @@ export default {
       const taskIndex = this.tasks.indexOf(task);
       this.tasks.splice(taskIndex, 1);
     },
-    editTask(index) {
+    editTask(task) {
+      const taskIndex = this.tasks.indexOf(task);
       const editedTodo = prompt("Редактировать задачу:");
       if (editedTodo !== null && editedTodo.trim() !== "") {
-        this.tasks[index].title = editedTodo.trim();
+        this.tasks[taskIndex].title = editedTodo.trim();
       }
     },
     toggleCompleted(task) {
